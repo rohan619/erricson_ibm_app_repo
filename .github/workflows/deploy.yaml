@@ -38,7 +38,11 @@ jobs:
       # 3. Create the Release! (No --images flag needed because the YAML is already updated)
       - name: Create Cloud Deploy Release
         run: |
-          gcloud deploy releases create app-release-${{ GITHUB_SHA:0:7 }} \
+          # 1. Grab the full SHA and cut it down to the first 7 characters
+          SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
+          
+          # 2. Use the new, short variable for the release name!
+          gcloud deploy releases create app-release-${SHORT_SHA} \
             --project="${{ secrets.GCP_PROJECT_ID }}" \
             --region="${{ secrets.ARTIFACT_REGION }}" \
             --delivery-pipeline="my-python-app-pipeline"
