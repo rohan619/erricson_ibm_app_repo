@@ -17,7 +17,7 @@ spec:
       containers:
       - name: python-app-container
         # This will be automatically replaced with your signed image digest!
-        image: us-central1-docker.pkg.dev/project-4b96061c-a0d1-4f8c-ac8/my-docker-repo/app-image@sha256:65e91e9d0273de84c8964b328abdb0ac7919b5271b8c24cbbdec8491730c24e0
+        image: us-central1-docker.pkg.dev/project-4b96061c-a0d1-4f8c-ac8/my-docker-repo/app-image@sha256:b7299827e034cd3868d02386d250de0b33381e955b86b80ec91dee61dac111b8
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080 # Change this to the port your Python app listens on (e.g., 5000 for Flask, 8000 for FastAPI)
