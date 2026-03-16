@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-python-app
+  labels:
+    app: my-python-app
+spec:
+  replicas: 2 # Runs two copies of your app for high availability
+  selector:
+    matchLabels:
+      app: my-python-app
+  template:
+    metadata:
+      labels:
+        app: my-python-app
+    spec:
+      containers:
+      - name: python-app-container
+        # This will be automatically replaced with your signed image digest!
+        image: us-central1-docker.pkg.dev/YOUR_PROJECT_ID/YOUR_REPO/app-image:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080 # Change this to the port your Python app listens on (e.g., 5000 for Flask, 8000 for FastAPI)
+        resources:
+          requests:
+            cpu: "150m"
+            memory: "256Mi"
+          limits:
+            cpu: "300m"
+            memory: "512Mi"
