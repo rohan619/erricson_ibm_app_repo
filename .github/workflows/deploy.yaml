@@ -10,7 +10,7 @@ on:
 
 jobs:
   run-cloud-deploy:
-    runs-on: my-gke-runners
+    runs-on: ubuntu-latest
     permissions:
       contents: read
       id-token: write
