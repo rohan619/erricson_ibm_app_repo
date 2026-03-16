@@ -12,7 +12,7 @@ spec:
   template:
     metadata:
       labels:
-        app: my-python-app  # name of file
+        app: my-python-app  # name of file.
     spec:
       containers:
       - name: python-app-container
