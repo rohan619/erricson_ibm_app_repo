@@ -38,7 +38,7 @@ jobs:
       # 3. Create the Release! (No --images flag needed because the YAML is already updated)
       - name: Create Cloud Deploy Release
         run: |
-          gcloud deploy releases create app-release-${{ github.sha }} \
+          gcloud deploy releases create app-release-${{ GITHUB_SHA:0:7 }} \
             --project="${{ secrets.GCP_PROJECT_ID }}" \
             --region="${{ secrets.ARTIFACT_REGION }}" \
             --delivery-pipeline="my-python-app-pipeline"
