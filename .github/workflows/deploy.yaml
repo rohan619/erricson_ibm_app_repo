@@ -6,7 +6,7 @@ on:
     branches:
       - main
     paths:
-      - 'base/kustomization.yaml''
+      - 'base/kustomization.yaml'
   workflow_dispatch:
     
 jobs:
