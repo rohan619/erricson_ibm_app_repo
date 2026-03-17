@@ -6,8 +6,9 @@ on:
     branches:
       - main
     paths:
-      - 'deployment.yaml'
-
+      - 'base/kustomization.yaml''
+  workflow_dispatch:
+    
 jobs:
   run-cloud-deploy:
     runs-on: ubuntu-latest
