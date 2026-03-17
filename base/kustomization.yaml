@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - deployment.yaml
+  - service.yaml
+
+# Repo 1 will automatically update this tag with the exact image digest!
+images:
+  - name: my-app-image
+    newName: us-central1-docker.pkg.dev/YOUR_PROJECT_ID/YOUR_REPO/app-image
+    newTag: latest

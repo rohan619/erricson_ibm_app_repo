@@ -1,21 +1,26 @@
-# 1. THE PIPELINE DEFINITION
 apiVersion: deploy.cloud.google.com/v1
 kind: DeliveryPipeline
 metadata:
   name: my-python-app-pipeline
-description: "Automated CI/CD Pipeline for my Python App"
 serialPipeline:
   stages:
-  - targetId: staging-cluster # Tells the pipeline where to deploy first!
-    profiles: []
-
+  - targetId: staging-cluster
+    profiles: [staging]
+  - targetId: prod-cluster
+    profiles: [prod]
 ---
-# 2. THE TARGET DEFINITION (Your actual GKE Cluster)
 apiVersion: deploy.cloud.google.com/v1
 kind: Target
 metadata:
   name: staging-cluster
-description: "My GKE Staging Environment"
 gke:
-  # Replace this with your actual GCP Project ID, Region, and Cluster Name!
+  cluster: projects/project-4b96061c-a0d1-4f8c-ac8/locations/us-central1-a/clusters/cluster-1
+---
+apiVersion: deploy.cloud.google.com/v1
+kind: Target
+metadata:
+  name: prod-cluster
+requireApproval: true # <--- 🛑 THE MANUAL APPROVAL GATE!
+gke:
+  # You can use the exact same cluster string here for your PoC! Kustomize handles the naming.
   cluster: projects/project-4b96061c-a0d1-4f8c-ac8/locations/us-central1-a/clusters/cluster-1

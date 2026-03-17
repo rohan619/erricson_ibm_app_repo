@@ -1,0 +1,8 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../base
+namePrefix: prod- # This makes your app "prod-my-python-app"
+replicas:
+  - name: my-python-app
+    count: 3 # Production gets 3 pods!

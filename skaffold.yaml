@@ -1,6 +1,11 @@
 apiVersion: skaffold/v4beta7
 kind: Config
-manifests:
-  rawYaml:
-    - deployment.yaml
-    - service.yaml
+profiles:
+  - name: staging
+    manifests:
+      kustomize:
+        paths: ["overlays/staging"]
+  - name: prod
+    manifests:
+      kustomize:
+        paths: ["overlays/prod"]
