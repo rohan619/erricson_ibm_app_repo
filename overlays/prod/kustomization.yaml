@@ -6,5 +6,11 @@ namePrefix: prod- # This makes your app "prod-my-python-app"
 replicas:
   - name: my-python-app
     count: 3 # Production gets 3 pods!
-patchesStrategicMerge:
-  - path: service-patch.yaml
+patches:
+  - target:
+      kind: Service
+      name: my-python-app-service
+    patch: |-
+      - op: replace
+        path: /spec/ports/0/nodePort
+        value: 30081
