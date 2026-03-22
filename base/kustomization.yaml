@@ -5,8 +5,8 @@ resources:
   - deployment.yaml
   - service.yaml
 
-# Repo 1 will automatically update this tag with the exact image digest!
+# Repo 1 should update this digest with the exact image digest.
 images:
   - name: my-app-image
-    newName: us-central1-docker.pkg.dev/YOUR_PROJECT_ID/YOUR_REPO/app-image
-    newTag: sha256:6e78db662c4beebb1a02360971547be45e800a21f78d63da76872ad194471ec9
+    newName: us-central1-docker.pkg.dev/project-4b96061c-a0d1-4f8c-ac8/my-docker-repo/app-image
+    digest: sha256:6e78db662c4beebb1a02360971547be45e800a21f78d63da76872ad194471ec9
