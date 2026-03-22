@@ -9,4 +9,4 @@ resources:
 images:
   - name: my-app-image
     newName: us-central1-docker.pkg.dev/project-4b96061c-a0d1-4f8c-ac8/my-docker-repo/app-image
-    digest: sha256:6e78db662c4beebb1a02360971547be45e800a21f78d63da76872ad194471ec9
+    digest: sha256:719d52851ebfd219fe3830dd3c88b8c87c91005a0f0678716650255314637a0b
