@@ -27,9 +27,9 @@ So the responsibility of this repository is safe, repeatable environment promoti
 - `base/`
   - Base Kubernetes manifests (`Deployment`, `Service`) used by all environments.
 - `overlays/staging/`
-  - Adds `staging-` resource name prefix.
+  - Adds `staging-` resource name prefix and deploys into `staging` namespace.
 - `overlays/prod/`
-  - Adds `prod-` prefix, scales replicas to 3, and changes Service `nodePort` to `30081`.
+  - Adds `prod-` prefix, deploys into `prod` namespace, scales replicas to 3, and changes Service `nodePort` to `30081`.
 - `skaffold.yaml`
   - Defines `staging` and `prod` profiles mapped to overlays.
 - `clouddeploy.yaml`
@@ -44,11 +44,13 @@ So the responsibility of this repository is safe, repeatable environment promoti
 
 ### Staging
 - Resource name prefix: `staging-`
+- Namespace: `staging`
 - Uses base replica count (2)
 - Service NodePort from base: `30080`
 
 ### Production
 - Resource name prefix: `prod-`
+- Namespace: `prod`
 - Replica override: `3`
 - Service NodePort override: `30081`
 - Promotion requires manual approval in Cloud Deploy
