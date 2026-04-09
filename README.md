@@ -49,7 +49,7 @@ This repo is the GitOps source of truth for runtime deployment configuration:
 
 ## Typical Workflow
 
-1. Update image reference in `base/kustomization.yaml` (typically automated by `erricson_ibm_poc`).
+1. Update image reference in `overlays/staging/kustomization.yaml` and `overlays/prod/kustomization.yaml` (typically automated by `erricson_ibm_poc`).
 2. Commit/push to `main`.
 3. ArgoCD syncs manifests to the target cluster(s).
 4. Verify rollout in staging and production.

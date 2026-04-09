@@ -14,7 +14,7 @@ Secure GitOps delivery chain:
 
 1. Infra repo provisions GKE and self-hosted GitHub runners.
 2. App repo (`erricson_ibm_poc`) runs tests/scans, builds image, signs attestation.
-3. App repo updates immutable image digest in `erricson_ibm_app_repo/base/kustomization.yaml`.
+3. App repo updates immutable image digest in `erricson_ibm_app_repo/overlays/*/kustomization.yaml`.
 4. ArgoCD detects repo changes and syncs manifests to cluster.
 
 In the current setup, `staging` and `prod` are separate namespaces in the same GKE cluster.
@@ -58,7 +58,7 @@ Key files:
 2. Quality gates run (tests/scans).
 3. Image builds and pushes to Artifact Registry.
 4. Digest is resolved and attested.
-5. `erricson_ibm_poc` updates `erricson_ibm_app_repo/base/kustomization.yaml` with immutable digest.
+5. `erricson_ibm_poc` updates `erricson_ibm_app_repo/overlays/staging/kustomization.yaml` and `overlays/prod/kustomization.yaml` with immutable digest.
 6. ArgoCD syncs the updated manifests to Kubernetes.
 
 ## 4. Required Prerequisites
@@ -153,7 +153,9 @@ Checks:
 Checks:
 1. Verify `GITOPS_PAT` is valid and has repository write permission.
 2. Confirm target branch is correct (`main` by default).
-3. Confirm `base/kustomization.yaml` contains expected image mapping.
+3. Confirm overlay kustomization files contain expected image mapping:
+   - `overlays/staging/kustomization.yaml`
+   - `overlays/prod/kustomization.yaml`
 
 ### C) ArgoCD does not apply latest commit
 
