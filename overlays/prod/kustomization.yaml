@@ -9,7 +9,7 @@ namePrefix: prod- # This makes your app "prod-my-python-app"
 images:
   - name: my-app-image
     newName: us-central1-docker.pkg.dev/project-4b96061c-a0d1-4f8c-ac8/my-docker-repo/app-image
-    digest: sha256:c8aa994511d117bd677cdb838fb69b1afeb3adcb67d506a69cd944008d35b991
+    digest: sha256:b6ea4f9303f33e06ef26d7524be77093d145f9e6242a1ece336eb2a3a805b209
 
 replicas:
   - name: my-python-app
