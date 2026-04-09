@@ -5,3 +5,8 @@ resources:
   - ../../base
 namespace: staging
 namePrefix: staging- # This makes your app "staging-my-python-app"
+
+images:
+  - name: my-app-image
+    newName: us-central1-docker.pkg.dev/project-4b96061c-a0d1-4f8c-ac8/my-docker-repo/app-image
+    digest: sha256:551abc6fd59c32d2a8ae5da5bbf7b2097342d772eb12403e9e6273f5fe838df6
